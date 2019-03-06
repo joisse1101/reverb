@@ -39,8 +39,8 @@ def run():
         profile["stt_engine"] = response
         api_key_name = stt_engines[response]
         if api_key_name:
-            #key = raw_input("\nPlease enter your API key: ")
-            profile["keys"] = {api_key_name: "AIzaSyAeTQmFgSKSpZ7TSvnhmhC-eCPVZNY-4es"}
+            key = raw_input("\nPlease enter your API key: ")
+            profile["keys"] = {api_key_name: key}
     else:
         print("Unrecognized STT engine. Available implementations: %s"
               % stt_engines.keys())
