@@ -45,7 +45,7 @@ def handle(text, mic, profile):
 
     mic.say("Knock knock")
 
-    def firstLine(text, mic, profile):
+    def firstLine(text):
         mic.say(joke[0])
 
         def punchLine(text):
