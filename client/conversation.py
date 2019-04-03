@@ -36,19 +36,29 @@ class Conversation(object):
             #    self._logger.info("Nothing has been said or transcribed.")
             #    continue
             #self._logger.info("Keyword '%s' has been said!", self.persona)
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> parent of 0c6bb2f... Update conversation.py
             threshold, transcribed = self.mic.passiveListen(self.persona)
 
             self._logger.debug("Started to listen actively with threshold: %r",
                                threshold)
             input = self.mic.activeListenToAllOptions(threshold)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 0c6bb2f... Update conversation.py
             self._logger.debug("Stopped to listen actively with threshold: %r",
                                threshold)
 
             if not transcribed:
                 self._logger.info("Nothing has been said or transcribed.")
                 continue
+
+
 
             if input:
                 self._logger.debug("Sending input to BRAIN")
