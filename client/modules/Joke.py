@@ -43,6 +43,8 @@ def handle(text, mic, profile):
     """
     joke = getRandomJoke()
 
+    mic.say("Knock knock")
+
     def firstLine(text, mic, profile):
         mic.say(joke[0])
 
