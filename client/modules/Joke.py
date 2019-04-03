@@ -43,9 +43,7 @@ def handle(text, mic, profile):
     """
     joke = getRandomJoke()
 
-    print joke[0]
-
-    def firstLine(text):
+    def firstLine(text, mic, profile):
         mic.say(joke[0])
 
         def punchLine(text):
