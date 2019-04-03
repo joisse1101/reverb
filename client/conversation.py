@@ -26,8 +26,6 @@ class Conversation(object):
             for notif in notifications:
                 self._logger.info("Received notification: '%s'", str(notif))
 
-            #ORIGINAL CODE START
-
             #self._logger.debug("Started listening for keyword '%s'",
             #                   self.persona)
             #threshold, transcribed = self.mic.passiveListen(self.persona)
@@ -38,26 +36,22 @@ class Conversation(object):
             #    self._logger.info("Nothing has been said or transcribed.")
             #    continue
             #self._logger.info("Keyword '%s' has been said!", self.persona)
-
-            #self._logger.debug("Started to listen actively with threshold: %r",
-            #                   threshold)
-            #input = self.mic.activeListenToAllOptions(threshold)
-            #self._logger.debug("Stopped to listen actively with threshold: %r",
-            #                   threshold)
-
-            #ORIGINAL CODE END
-
+            
             threshold, transcribed = self.mic.passiveListen(self.persona)
 
             self._logger.debug("Started to listen actively with threshold: %r",
                                threshold)
             input = self.mic.activeListenToAllOptions(threshold)
+
+
             self._logger.debug("Stopped to listen actively with threshold: %r",
                                threshold)
 
             if not transcribed or not threshold:
                 self._logger.info("Nothing has been said or transcribed.")
                 continue
+
+
 
             if input:
                 self.brain.query(input)
