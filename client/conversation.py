@@ -51,7 +51,7 @@ class Conversation(object):
                 continue
 
             if input:
-                self._logger.debug("Sending input to BRAIN",
+                self._logger.debug("Sending input to BRAIN")
                 self.brain.query(input)
             else:
                 self.mic.say("Pardon?")
