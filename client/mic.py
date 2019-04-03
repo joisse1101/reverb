@@ -181,7 +181,7 @@ class Mic:
         if any(PERSONA in phrase for phrase in transcribed):
             return (THRESHOLD, PERSONA)
 
-        return (25.0, transcribed)
+        return (False, transcribed)
 
     def activeListen(self, THRESHOLD=None, LISTEN=True, MUSIC=False):
         """
