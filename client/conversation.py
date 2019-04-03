@@ -55,11 +55,12 @@ class Conversation(object):
             self._logger.debug("Stopped to listen actively with threshold: %r",
                                threshold)
 
-            if not transcribed or not threshold:
+            if not transcribed:
                 self._logger.info("Nothing has been said or transcribed.")
-                continue                               
+                continue
 
             if input:
+                self._logger.info("Sending input to brain")
                 self.brain.query(input)
             else:
                 self.mic.say("Pardon?")
