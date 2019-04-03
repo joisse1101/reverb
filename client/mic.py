@@ -48,7 +48,7 @@ class Mic:
 
         # TODO: Consolidate variables from the next three functions
         THRESHOLD_MULTIPLIER = 1.8
-        RATE = 16000
+        RATE = 8000
         CHUNK = 1024
 
         # number of seconds to allow to establish threshold
@@ -93,8 +93,8 @@ class Mic:
         """
 
         THRESHOLD_MULTIPLIER = 1.8
-        RATE = 16000
-        CHUNK = 1024
+        RATE = 44100
+        CHUNK = 3072
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
