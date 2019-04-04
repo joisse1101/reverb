@@ -49,7 +49,7 @@ class Conversation(object):
 
             threshold, transcribed = self.mic.passiveListen(self.persona)
 
-            self._logger.debug("Started to listen actively with threshold: %r",
+            self._logger.debug("Started To listen actively with threshold: %r",
                                threshold)
             input = self.mic.activeListenToAllOptions(threshold)
             self._logger.debug("Stopped to listen actively with threshold: %r",
