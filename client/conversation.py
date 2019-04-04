@@ -51,11 +51,8 @@ class Conversation(object):
 
             input = self.mic.activeListenToAllOptions(threshold)
 
-            if not input:
-                self._logger.info("Nothing has been said.")
-                continue
-
             if input:
                 self.brain.query(input)
             else:
-                self.mic.say("Pardon?")
+                self._logger.info("Nothing has been said.")
+                #self.mic.say("Pardon?")
