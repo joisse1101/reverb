@@ -47,7 +47,7 @@ class Conversation(object):
 
             #ORIGINAL CODE END
 
-            threshold = self.mic.fetchThreshold(self)
+            threshold = self.mic.fetchThreshold()
 
             input = self.mic.activeListenToAllOptions(threshold)
 
