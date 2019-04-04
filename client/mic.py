@@ -36,12 +36,12 @@ class Mic:
         self._audio = pyaudio.PyAudio()
         self._logger.info("Initialization of PyAudio completed.")
 
+    def __del__(self):
+        self._audio.terminate()
+
     def resample(self, data, rate):
         (newfragment, state) = audioop.ratecv(data, 2, 1, rate, 16000, None)
         return newfragment
-
-    def __del__(self):
-        self._audio.terminate()
 
     def getScore(self, data):
         rms = audioop.rms(data, 2)
@@ -52,8 +52,8 @@ class Mic:
 
         # TODO: Consolidate variables from the next three functions
         THRESHOLD_MULTIPLIER = 1.8
-        RATE = 44100
-        CHUNK = 3072
+        RATE = 16000 #8000
+        CHUNK = 1024
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -97,8 +97,8 @@ class Mic:
         """
 
         THRESHOLD_MULTIPLIER = 1.8
-        RATE = 44100
-        CHUNK = 3072
+        RATE = 16000
+        CHUNK = 1024
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -206,8 +206,8 @@ class Mic:
             Returns a list of the matching options or None
         """
 
-        RATE = 44100
-        CHUNK = 3072
+        RATE = 16000
+        CHUNK = 1024
         LISTEN_TIME = 12
 
         # check if no threshold provided
