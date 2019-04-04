@@ -36,6 +36,10 @@ class Mic:
         self._audio = pyaudio.PyAudio()
         self._logger.info("Initialization of PyAudio completed.")
 
+    def resample(self, data, rate):
+        (newfragment, state) = audioop.ratecv(data, 2, 1, rate, 16000, None)
+        return newfragment
+
     def __del__(self):
         self._audio.terminate()
 
@@ -48,8 +52,8 @@ class Mic:
 
         # TODO: Consolidate variables from the next three functions
         THRESHOLD_MULTIPLIER = 1.8
-        RATE = 8000
-        CHUNK = 1024
+        RATE = 44100
+        CHUNK = 3072
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -70,7 +74,7 @@ class Mic:
         # calculate the long run average, and thereby the proper threshold
         for i in range(0, RATE / CHUNK * THRESHOLD_TIME):
 
-            data = stream.read(CHUNK)
+            data = self.resample(stream.read(CHUNK), RATE)
             frames.append(data)
 
             # save this data point as a score
@@ -118,7 +122,7 @@ class Mic:
         # calculate the long run average, and thereby the proper threshold
         for i in range(0, RATE / CHUNK * THRESHOLD_TIME):
 
-            data = stream.read(CHUNK)
+            data = self.resample(stream.read(CHUNK), RATE)
             frames.append(data)
 
             # save this data point as a score
@@ -138,7 +142,7 @@ class Mic:
         # start passively listening for disturbance above threshold
         for i in range(0, RATE / CHUNK * LISTEN_TIME):
 
-            data = stream.read(CHUNK)
+            data = self.resample(stream.read(CHUNK), RATE)
             frames.append(data)
             score = self.getScore(data)
 
@@ -160,7 +164,7 @@ class Mic:
         DELAY_MULTIPLIER = 1
         for i in range(0, RATE / CHUNK * DELAY_MULTIPLIER):
 
-            data = stream.read(CHUNK)
+            data = self.resample(stream.read(CHUNK), RATE)
             frames.append(data)
 
         # save the audio data
@@ -202,8 +206,8 @@ class Mic:
             Returns a list of the matching options or None
         """
 
-        RATE = 16000
-        CHUNK = 1024
+        RATE = 44100
+        CHUNK = 3072
         LISTEN_TIME = 12
 
         # check if no threshold provided
@@ -226,7 +230,7 @@ class Mic:
 
         for i in range(0, RATE / CHUNK * LISTEN_TIME):
 
-            data = stream.read(CHUNK)
+            data = self.resample(stream.read(CHUNK), RATE)
             frames.append(data)
             score = self.getScore(data)
 
