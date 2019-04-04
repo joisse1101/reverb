@@ -28,11 +28,11 @@ class Conversation(object):
 
             #ORIGINAL CODE START
 
-            #self._logger.debug("Started listening for keyword '%s'",
-            #                   self.persona)
-            #threshold, transcribed = self.mic.passiveListen(self.persona)
-            #self._logger.debug("Stopped listening for keyword '%s'",
-            #                   self.persona)
+            self._logger.debug("Started listening for keyword '%s'",
+                               self.persona)
+            threshold, transcribed = self.mic.passiveListen(self.persona)
+            self._logger.debug("Stopped listening for keyword '%s'",
+                               self.persona)
 
             #if not transcribed or not threshold:
             #    self._logger.info("Nothing has been said or transcribed.")
@@ -47,7 +47,7 @@ class Conversation(object):
 
             #ORIGINAL CODE END
 
-            input = self.mic.activeListenToAllOptions(25.0)
+            input = self.mic.activeListenToAllOptions(threshold)
 
             if not input:
                 self._logger.info("Nothing has been said.")
