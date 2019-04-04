@@ -47,21 +47,6 @@ class Conversation(object):
 
             #ORIGINAL CODE END
 
-<<<<<<< HEAD
-            threshold, transcribed = self.mic.passiveListen(self.persona)
-
-            self._logger.debug("Started To listen actively with threshold: %r",
-                               threshold)
-            input = self.mic.activeListenToAllOptions(threshold)
-            self._logger.debug("Stopped to listen actively with threshold: %r",
-                               threshold)
-
-            if not transcribed or not threshold:
-                self._logger.info("Nothing has been said or transcribed.")
-                continue                               
-
-=======
->>>>>>> parent of a087f6f... Update conversation.py
             if input:
                 self.brain.query(input)
             else:
