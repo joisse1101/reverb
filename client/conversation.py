@@ -47,6 +47,12 @@ class Conversation(object):
 
             #ORIGINAL CODE END
 
+            input = self.mic.activeListenToAllOptions(threshold)
+
+            if not input:
+                self._logger.info("Nothing has been said.")
+                continue
+
             if input:
                 self.brain.query(input)
             else:
