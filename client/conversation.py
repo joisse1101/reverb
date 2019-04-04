@@ -1,6 +1,6 @@
 # -*- coding: utf-8-*-
 import logging
-from notifier import Notifier
+#from notifier import Notifier
 from brain import Brain
 
 
@@ -22,9 +22,9 @@ class Conversation(object):
                           self.persona)
         while True:
             # Print notifications until empty
-            notifications = self.notifier.getAllNotifications()
-            for notif in notifications:
-                self._logger.info("Received notification: '%s'", str(notif))
+            #notifications = self.notifier.getAllNotifications()
+            #for notif in notifications:
+            #    self._logger.info("Received notification: '%s'", str(notif))
 
             #ORIGINAL CODE START
 
