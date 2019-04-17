@@ -134,6 +134,6 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return bool(re.search(r'\bstop\b', r'\bprof\b', text, re.IGNORECASE))
+    return bool(re.search(r'\bstop\b', text, re.IGNORECASE))
 
 
