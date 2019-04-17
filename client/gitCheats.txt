@@ -1,0 +1,47 @@
+Add files: git add --all
+
+Recording cmd: arecord -D sysdefault:CARD=0 test.wav
+
+Google API: AIzaSyAeTQmFgSKSpZ7TSvnhmhC-eCPVZNY-4es
+
+Committing/Pushing:
+git commit -am 'commit comment'
+git push origin [branch-name]
+
+Check status: git status
+
+Pulling: git pull origin [branch-name]
+
+Checking log: git log [file-name]
+
+Reverting file: git checkout [commit-id]
+
+New branch: git checkout -b [branch-name]
+
+Delete branch: git checkout -D [branch-name]
+
+Changing branch:git checkout [branch-name]
+
+Merging branch:
+git checkout [master-branch-name]
+git checkout [merge-branch-name]
+
+
+original .asoundrc file
+
+pcm.!default {
+        type hw
+        card 1
+}
+
+pcm.usb_mic {
+        type plug
+        slave {
+                pcm "hw:0,0"
+        }
+}
+
+ctl.!default {
+        type hw
+        card 1
+

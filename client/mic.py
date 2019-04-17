@@ -9,7 +9,7 @@ import audioop
 import pyaudio
 import alteration
 import jasperpath
-
+#import CarHorn_Detector as detector
 
 class Mic:
 
@@ -53,7 +53,7 @@ class Mic:
         # TODO: Consolidate variables from the next three functions
         THRESHOLD_MULTIPLIER = 1.8
         RATE = 16000 #8000
-        CHUNK = 1024
+        CHUNK = 2048 #1024
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -98,7 +98,7 @@ class Mic:
 
         THRESHOLD_MULTIPLIER = 1.8
         RATE = 16000
-        CHUNK = 1024
+        CHUNK = 2048 #1024
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -201,14 +201,14 @@ class Mic:
     def activeListenToAllOptions(self, THRESHOLD=None, LISTEN=True,
                                  MUSIC=False):
         """
-            Records until a second of silence or times out after 12 seconds
+            Records until a second of silence or times out after 12  seconds
 
             Returns a list of the matching options or None
         """
 
         RATE = 16000
-        CHUNK = 1024
-        LISTEN_TIME = 12
+        CHUNK = 2048 #1024
+        LISTEN_TIME = 2 #used to be 12 
 
         # check if no threshold provided
         if THRESHOLD is None:
@@ -249,7 +249,7 @@ class Mic:
         stream.stop_stream()
         stream.close()
 
-        with tempfile.SpooledTemporaryFile(mode='w+b') as f:
+        with tempfile.NamedTemporaryFile(mode='w+b') as f:
             wav_fp = wave.open(f, 'wb')
             wav_fp.setnchannels(1)
             wav_fp.setsampwidth(pyaudio.get_sample_size(pyaudio.paInt16))
@@ -257,6 +257,9 @@ class Mic:
             wav_fp.writeframes(''.join(frames))
             wav_fp.close()
             f.seek(0)
+            print('f_name' + f.name)
+            #detector.print_prediction(f.name)
+            
             return self.active_stt_engine.transcribe(f)
 
     def say(self, phrase,

@@ -1,0 +1,8 @@
+carrier: ''
+first_name: test
+gmail_password: ''
+keys:
+  GOOGLE_SPEECH: AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do
+phone_number: ''
+prefers_email: false
+stt_engine: google

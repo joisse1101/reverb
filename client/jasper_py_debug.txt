@@ -1,0 +1,171 @@
+import ok
+*******************************************************
+*             JASPER - THE TALKING COMPUTER           *
+* (c) 2015 Shubhro Saha, Charlie Marsh & Jan Holthuis *
+*******************************************************
+DEBUG:client.diagnose:Checking network connection to server 'www.google.com'...
+DEBUG:client.diagnose:Network connection working
+DEBUG:__main__:Trying to read config file: '/home/pi/.jasper/profile.yml'
+DEBUG:client.diagnose:Checking network connection to server 'www.google.com'...
+DEBUG:client.diagnose:Network connection working
+WARNING:root:tts_engine not specified in profile, defaulting to 'espeak-tts'
+DEBUG:client.diagnose:Checking executable 'aplay'...
+DEBUG:client.diagnose:Executable 'aplay' found: '/usr/bin/aplay'
+DEBUG:client.diagnose:Checking executable 'espeak'...
+DEBUG:client.diagnose:Executable 'espeak' found: '/usr/bin/espeak'
+DEBUG:client.brain:Looking for modules in: '/home/pi/reverb/client/modules'
+DEBUG:client.brain:Found module 'Birthday' with words: ['BIRTHDAY']
+DEBUG:client.brain:Found module 'Gmail' with words: ['EMAIL', 'INBOX']
+DEBUG:client.brain:Found module 'HN' with words: ['HACKER', 'NEWS', 'YES', 'NO', 'FIRST', 'SECOND', 'THIRD']
+DEBUG:client.brain:Found module 'Joke' with words: ['JOKE', 'KNOCK KNOCK']
+DEBUG:client.brain:Found module 'Life' with words: ['MEANING', 'OF', 'LIFE']
+DEBUG:client.brain:Found module 'MPDControl' with words: ['MUSIC', 'SPOTIFY']
+DEBUG:client.brain:Found module 'News' with words: ['NEWS', 'YES', 'NO', 'FIRST', 'SECOND', 'THIRD']
+DEBUG:client.brain:Found module 'Notifications' with words: ['FACEBOOK', 'NOTIFICATION']
+DEBUG:client.brain:Found module 'Time' with words: ['TIME']
+DEBUG:client.brain:Found module 'Unclear' with words: []
+DEBUG:client.brain:Found module 'Weather' with words: ['WEATHER', 'TODAY', 'TOMORROW']
+INFO:client.mic:Initializing PyAudio. ALSA/Jack error messages that pop up during this process are normal and can usually be safely ignored.
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'defaults.bluealsa.device'
+ALSA lib conf.c:4528:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4996:(snd_config_expand) Args evaluate error: No such file or directory
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM bluealsa
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'defaults.bluealsa.device'
+ALSA lib conf.c:4528:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4996:(snd_config_expand) Args evaluate error: No such file or directory
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM bluealsa
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+INFO:client.mic:Initialization of PyAudio completed.
+DEBUG:client.tts:Saying 'How can I be of service, test?' with 'espeak-tts'
+DEBUG:client.tts:Executing espeak -v default+m3 -p 40 -s 160 -w /tmp/tmpwzxYc0.wav 'How can I be of service, test?'
+DEBUG:client.tts:Executing aplay -D default /tmp/tmpwzxYc0.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/tmp/tmpwzxYc0.wav' : Signed 16 bit Little Endian, Rate 22050 Hz, Mono
+'
+DEBUG:client.brain:Looking for modules in: '/home/pi/reverb/client/modules'
+DEBUG:client.brain:Found module 'Birthday' with words: ['BIRTHDAY']
+DEBUG:client.brain:Found module 'Gmail' with words: ['EMAIL', 'INBOX']
+DEBUG:client.brain:Found module 'HN' with words: ['HACKER', 'NEWS', 'YES', 'NO', 'FIRST', 'SECOND', 'THIRD']
+DEBUG:client.brain:Found module 'Joke' with words: ['JOKE', 'KNOCK KNOCK']
+DEBUG:client.brain:Found module 'Life' with words: ['MEANING', 'OF', 'LIFE']
+DEBUG:client.brain:Found module 'MPDControl' with words: ['MUSIC', 'SPOTIFY']
+DEBUG:client.brain:Found module 'News' with words: ['NEWS', 'YES', 'NO', 'FIRST', 'SECOND', 'THIRD']
+DEBUG:client.brain:Found module 'Notifications' with words: ['FACEBOOK', 'NOTIFICATION']
+DEBUG:client.brain:Found module 'Time' with words: ['TIME']
+DEBUG:client.brain:Found module 'Unclear' with words: []
+DEBUG:client.brain:Found module 'Weather' with words: ['WEATHER', 'TODAY', 'TOMORROW']
+WARNING:client.notifier:gmail_address or gmail_password not set in profile, Gmail notifier will not be used
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:No jobs; waiting until a job is added
+INFO:apscheduler.scheduler:Added job "Notifier.gather" to job store "default"
+INFO:client.conversation:Starting to handle conversation with keyword 'HELLO'.
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2019-03-27 10:16:27.827565+00:00 (in 29.991046 seconds)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.google.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+INFO:client.stt:Transcribed: (u'HELLO',)
+DEBUG:client.conversation:Stopped listening for keyword 'HELLO'
+INFO:client.conversation:Keyword 'HELLO' has been said!
+DEBUG:client.conversation:Started to listen actively with threshold: 5290.2
+DEBUG:client.tts:Executing aplay -D default /home/pi/reverb/static/audio/beep_hi.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/home/pi/reverb/static/audio/beep_hi.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+'
+DEBUG:client.tts:Executing aplay -D default /home/pi/reverb/static/audio/beep_lo.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/home/pi/reverb/static/audio/beep_lo.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+'
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.google.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+WARNING:client.stt:Empty response: Nothing has been transcribed.
+DEBUG:client.conversation:Stopped to listen actively with threshold: 5290.2
+DEBUG:client.tts:Saying 'Pardon?' with 'espeak-tts'
+DEBUG:client.tts:Executing espeak -v default+m3 -p 40 -s 160 -w /tmp/tmpQQIGju.wav 'Pardon?'
+DEBUG:client.tts:Executing aplay -D default /tmp/tmpQQIGju.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/tmp/tmpQQIGju.wav' : Signed 16 bit Little Endian, Rate 22050 Hz, Mono
+'
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+INFO:client.stt:Transcribed: (u'HELLO',)
+DEBUG:client.conversation:Stopped listening for keyword 'HELLO'
+INFO:client.conversation:Keyword 'HELLO' has been said!
+DEBUG:client.conversation:Started to listen actively with threshold: 2025.0
+DEBUG:client.tts:Executing aplay -D default /home/pi/reverb/static/audio/beep_hi.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/home/pi/reverb/static/audio/beep_hi.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+'
+DEBUG:client.tts:Executing aplay -D default /home/pi/reverb/static/audio/beep_lo.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/home/pi/reverb/static/audio/beep_lo.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+WARNING:client.stt:Empty response: Nothing has been transcribed.
+DEBUG:client.conversation:Stopped to listen actively with threshold: 2025.0
+DEBUG:client.tts:Saying 'Pardon?' with 'espeak-tts'
+DEBUG:client.tts:Executing espeak -v default+m3 -p 40 -s 160 -w /tmp/tmpCPUmvC.wav 'Pardon?'
+DEBUG:client.tts:Executing aplay -D default /tmp/tmpCPUmvC.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/tmp/tmpCPUmvC.wav' : Signed 16 bit Little Endian, Rate 22050 Hz, Mono
+'
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+INFO:client.stt:Transcribed: (u'BOOK', u'POKE', u'POLK', u'BROOKE')
+DEBUG:client.conversation:Stopped listening for keyword 'HELLO'
+INFO:client.conversation:Nothing has been said or transcribed.
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+WARNING:client.stt:Empty response: Nothing has been transcribed.
+DEBUG:client.conversation:Stopped listening for keyword 'HELLO'
+INFO:client.conversation:Nothing has been said or transcribed.
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+INFO:client.stt:Transcribed: (u'HELLO', u'HELLO.')
+DEBUG:client.conversation:Stopped listening for keyword 'HELLO'
+INFO:client.conversation:Keyword 'HELLO' has been said!
+DEBUG:client.conversation:Started to listen actively with threshold: 2426.4
+DEBUG:client.tts:Executing aplay -D default /home/pi/reverb/static/audio/beep_hi.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/home/pi/reverb/static/audio/beep_hi.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+'
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "Notifier.gather (trigger: interval[0:00:30], next run at: 2019-03-27 10:16:27 UTC)" (scheduled at 2019-03-27 10:16:27.827565+00:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2019-03-27 10:16:57.827565+00:00 (in 29.998608 seconds)
+INFO:apscheduler.executors.default:Job "Notifier.gather (trigger: interval[0:00:30], next run at: 2019-03-27 10:16:57 UTC)" executed successfully
+DEBUG:client.tts:Executing aplay -D default /home/pi/reverb/static/audio/beep_lo.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/home/pi/reverb/static/audio/beep_lo.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
+'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+WARNING:client.stt:Empty response: Nothing has been transcribed.
+DEBUG:client.conversation:Stopped to listen actively with threshold: 2426.4
+DEBUG:client.tts:Saying 'Pardon?' with 'espeak-tts'
+DEBUG:client.tts:Executing espeak -v default+m3 -p 40 -s 160 -w /tmp/tmpChM3bJ.wav 'Pardon?'
+DEBUG:client.tts:Executing aplay -D default /tmp/tmpChM3bJ.wav
+DEBUG:client.tts:Output was: 'Playing WAVE '/tmp/tmpChM3bJ.wav' : Signed 16 bit Little Endian, Rate 22050 Hz, Mono
+'
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+DEBUG:requests.packages.urllib3.connectionpool:"POST /speech-api/v2/recognize?lang=en-us&pfilter=2&maxresults=6&client=chromium&key=AIzaSyBp3SIHZlhYwDYVNL1gwS7nJ779S83b-do&output=json HTTP/1.1" 200 None
+WARNING:client.stt:Empty response: Nothing has been transcribed.
+DEBUG:client.conversation:Stopped listening for keyword 'HELLO'
+INFO:client.conversation:Nothing has been said or transcribed.
+DEBUG:client.conversation:Started listening for keyword 'HELLO'
+^CTraceback (most recent call last):
+  File "jasper.py", line 152, in <module>
+    app.run()
+  File "jasper.py", line 122, in run
+    conversation.handleForever()
+  File "/home/pi/reverb/client/conversation.py", line 31, in handleForever
+    threshold, transcribed = self.mic.passiveListen(self.persona)
+  File "/home/pi/reverb/client/mic.py", line 126, in passiveListen
+    data = self.resample(stream.read(CHUNK), RATE)
+  File "/usr/lib/python2.7/dist-packages/pyaudio.py", line 608, in read
+    return pa.read_stream(self._stream, num_frames, exception_on_overflow)
+KeyboardInterrupt
+INFO:apscheduler.scheduler:Scheduler has been shut down

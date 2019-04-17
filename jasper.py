@@ -9,14 +9,19 @@ import logging
 import yaml
 import argparse
 
+
 from client import tts
 from client import stt
 from client import jasperpath
 from client import diagnose
 from client.conversation import Conversation
 
+import RPi.GPIO as GPIO
+import time
+
 # Add jasperpath.LIB_PATH to sys.path
 sys.path.append(jasperpath.LIB_PATH)
+print(jasperpath.LIB_PATH)
 
 parser = argparse.ArgumentParser(description='Jasper Voice Control Center')
 parser.add_argument('--local', action='store_true',
@@ -115,7 +120,8 @@ class Jasper(object):
                           % self.config["first_name"])
         else:
             salutation = "I am listening."
-        self.mic.say(salutation)
+        #self.mic.say(salutation)
+        self.mic.say("hello teo swee hin")
 
         conversation = Conversation("JASPER", self.mic, self.config)
         conversation.handleForever()
@@ -143,6 +149,7 @@ if __name__ == "__main__":
         sys.exit(0 if not failed_checks else 1)
 
     try:
+
         app = Jasper()
     except Exception:
         logger.error("Error occured!", exc_info=True)
