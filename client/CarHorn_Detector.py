@@ -19,7 +19,7 @@ from keras.utils import to_categorical
 
 
 from keras.models import load_model
-model = load_model('weights.best.basic_mlp.hdf5')
+model = load_model('/home/pi/reverb/client/weights.best.basic_mlp.hdf5')
 
 
 def extract_feature(file_name):
@@ -31,11 +31,14 @@ def extract_feature(file_name):
         
     except Exception as e:
         print("Error encountered while parsing file: ", file)
+        print("error: ", e)
         return None, None
 
     return np.array([mfccsscaled])
 
 def print_prediction(file_name):
+    #file_name = '/home/pi/reverb/client/temp/' + file_name
+    print('file name ' + file_name)
     prediction_feature = extract_feature(file_name) 
 
     predicted_vector = model.predict_classes(prediction_feature)
@@ -55,5 +58,5 @@ category = ['air_conditioner', 'car_horn', 'children_playing', 'dog_bark', 'dril
 le = LabelEncoder()
 le.fit(category)
 
-filename = '419698__14fvaltrovat__short-horn.wav' 
-print_prediction(filename)
+#filename = '419698__14fvaltrovat__short-horn.wav' 
+#print_prediction(filename)

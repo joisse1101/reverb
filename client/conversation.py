@@ -2,6 +2,7 @@
 import logging
 #from notifier import Notifier
 from brain import Brain
+import CarHorn_Detector as detector
 
 
 class Conversation(object):
@@ -50,9 +51,15 @@ class Conversation(object):
             threshold = self.mic.fetchThreshold()
 
             input = self.mic.activeListenToAllOptions(threshold)
+            print(input)
 
             if input:
                 self.brain.query(input)
             else:
+                print("no words detected")
                 self._logger.info("Nothing has been said.")
+                #print('input[0]: ' + str(input[0]))
+                
+                #detector.print_prediction(str(input[0]))
+                
                 #self.mic.say("Pardon?")

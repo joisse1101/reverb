@@ -364,12 +364,11 @@ class GoogleSTT(AbstractSTTEngine):
                 if 'keys' in profile and 'GOOGLE_SPEECH' in profile['keys']:
                     config['api_key'] = profile['keys']['GOOGLE_SPEECH']
         return config
-
+    
     def transcribe(self, fp):
         """
         Performs STT via the Google Speech API, transcribing an audio file and
         returning an English string.
-
         Arguments:
         audio_file_path -- the path to the .wav file to be transcribed
         """
@@ -407,7 +406,8 @@ class GoogleSTT(AbstractSTTEngine):
             response = json.loads(list(r.text.strip().split('\n', 1))[-1])
             if len(response['result']) == 0:
                 # Response result is empty
-                raise ValueError('Nothing has been transcribed.')
+                #raise ValueError('Nothing has been transcribed.')
+                return None
             results = [alt['transcript'] for alt
                        in response['result'][0]['alternative']]
         except ValueError as e:
@@ -425,6 +425,75 @@ class GoogleSTT(AbstractSTTEngine):
     @classmethod
     def is_available(cls):
         return diagnose.check_network_connection()
+
+"""
+    def transcribe(self, fp):
+        
+        Performs STT via the Google Speech API, transcribing an audio file and
+        returning an English string.
+
+        Arguments:
+        audio_file_path -- the path to the .wav file to be transcribed
+        
+
+        if not self.api_key:
+            self._logger.critical('API key missing, transcription request ' +
+                                  'aborted.')
+            return []
+        elif not self.language:
+            self._logger.critical('Language info missing, transcription ' +
+                                  'request aborted.')
+            return []
+
+        wav = wave.open(fp, 'rb')
+        frame_rate = wav.getframerate()
+        wav.close()
+        data = fp.read()
+
+        headers = {'content-type': 'audio/l16; rate=%s' % frame_rate}
+        r = self._http.post(self.request_url, data=data, headers=headers)
+        try:
+            r.raise_for_status()
+        except requests.exceptions.HTTPError:
+            self._logger.critical('Request failed with http status %d',
+                                  r.status_code)
+            if r.status_code == requests.codes['forbidden']:
+                self._logger.warning('Status 403 is probably caused by an ' +
+                                     'invalid Google API key.')
+            return []
+        r.encoding = 'utf-8'
+        try:
+            # We cannot simply use r.json() because Google sends invalid json
+            # (i.e. multiple json objects, seperated by newlines. We only want
+            # the last one).
+            response = json.loads(list(r.text.strip().split('\n', 1))[-1])
+            if len(response['result']) == 0:
+                # Response result is empty
+                #raise ValueError('Nothing has been transcribed.')
+                print('Nothing has been transcribed.')
+                #results_return = [fp.name]
+                #return results_return
+                return None
+            results = [alt['transcript'] for alt
+                       in response['result'][0]['alternative']]
+        except ValueError as e:
+            self._logger.warning('Empty response: %s', e.args[0])
+            results = []
+        except (KeyError, IndexError):
+            self._logger.warning('Cannot parse response.', exc_info=True)
+            results = []
+        else:
+            # Convert all results to uppercase
+            #results_return = [fp.name]
+            #(results_return.append(result.upper()) for result in results)
+            results = tuple(result.upper() for result in results)
+            self._logger.info('Transcribed: %r', results)
+        return results
+
+    @classmethod
+    def is_available(cls):
+        return diagnose.check_network_connection()
+        """
 
 
 class AttSTT(AbstractSTTEngine):

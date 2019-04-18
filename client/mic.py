@@ -9,12 +9,19 @@ import audioop
 import pyaudio
 import alteration
 import jasperpath
-#import CarHorn_Detector as detector
+import CarHorn_Detector as detector
+import sys
+
+import loudness
+
+sys.path.append('/home/pi/reverb/client/modules')
+import vibrate
 
 class Mic:
 
     speechRec = None
     speechRec_persona = None
+    
 
     def __init__(self, speaker, passive_stt_engine, active_stt_engine):
         """
@@ -53,7 +60,7 @@ class Mic:
         # TODO: Consolidate variables from the next three functions
         THRESHOLD_MULTIPLIER = 1.8
         RATE = 16000 #8000
-        CHUNK = 2048 #1024
+        CHUNK = 4096 #2048 #1024
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -98,7 +105,7 @@ class Mic:
 
         THRESHOLD_MULTIPLIER = 1.8
         RATE = 16000
-        CHUNK = 2048 #1024
+        CHUNK = 4096 #2048 #recommended #1024 default
 
         # number of seconds to allow to establish threshold
         THRESHOLD_TIME = 1
@@ -205,10 +212,13 @@ class Mic:
 
             Returns a list of the matching options or None
         """
+        
+        sys.path.append('/home/pi/reverb/client/modules')
+        import vibrate
 
         RATE = 16000
-        CHUNK = 2048 #1024
-        LISTEN_TIME = 2 #used to be 12 
+        CHUNK = 2048 #recommended #1024 default
+        LISTEN_TIME = 3 #used to be 12 
 
         # check if no threshold provided
         if THRESHOLD is None:
@@ -249,7 +259,8 @@ class Mic:
         stream.stop_stream()
         stream.close()
 
-        with tempfile.NamedTemporaryFile(mode='w+b') as f:
+        with tempfile.NamedTemporaryFile(mode='w+b') as f: # dir='/home/pi/reverb/client/temp') as f:
+            
             wav_fp = wave.open(f, 'wb')
             wav_fp.setnchannels(1)
             wav_fp.setsampwidth(pyaudio.get_sample_size(pyaudio.paInt16))
@@ -257,10 +268,33 @@ class Mic:
             wav_fp.writeframes(''.join(frames))
             wav_fp.close()
             f.seek(0)
-            print('f_name' + f.name)
-            #detector.print_prediction(f.name)
+            loudness_num = -60.0
             
-            return self.active_stt_engine.transcribe(f)
+            
+            loudness_num = loudness.detect_loudness(f.name)
+            print('loundess: ' + str(loudness_num))
+            
+            if loudness_num > -20.0:
+                #vibrate.retrieve_from_DOA('urgent')
+                #urgent sound
+                vibrate.retrieve_from_DOA_degree('urgent')
+                #vibrate.retrieve_from_DOA_degree('urgent')
+            elif (loudness_num < -20.0 and loudness_num > 40.0):
+                #vibrate.retrieve_from_DOA_degree('normal')
+                vibrate.retrieve_from_DOA_degree('normal')
+                                                
+            
+            print('f_name: ' + f.name)
+            
+            results = self.active_stt_engine.transcribe(f) 
+            
+            if results == None:
+                               
+                detector.print_prediction(f.name)
+                return None
+            else:
+            
+                return results
 
     def say(self, phrase,
             OPTIONS=" -vdefault+m3 -p 40 -s 160 --stdout > say.wav"):
